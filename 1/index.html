@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Vue Exercises #1</title>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/style.css" type="text/css" />
 </head>
 <body>
     <div id="app">
@@ -12,14 +15,20 @@
             <div class="product-image">
                 <img v-bind:src="image" :alt="altText">
                 <!-- Syntax is v-bind: or : for short. -->
-                
+
             </div>
             <div class="product-info">
                     <h1>{{product}}</h1>
                     <p>{{description}}</p>
+                    <a :href="link" target="blank">Socks Link</a>
+                    <p v-if='inStock > 10'>In stock</p>
+                    <p v-else-if='inStock < 10 && inStock > 0'>Almost out of stock!</p>
+                    <p v-else>Out of stock!</p>
+                        <!-- IF an element to frequently toggle on and off the page, you’ll want to use the v-show directive -->
+                    <span class="onsale" v-if="onSale">OnSale</span>
+                    <span></span>
             </div>
         </div>
-
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>

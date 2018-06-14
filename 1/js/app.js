@@ -5,7 +5,11 @@ var app = new Vue({
         product: 'Medyas',
         description: 'Fuzzy Medyas',
         image: 'image/vm-socks-blue.png',
-        altText: 'Pair of Socks'
+        altText: 'Pair of Socks',
+        link: 'https://github.com/jesraygarciano',
+        targetBlank: '_blank',
+        inStock: 8,
+        onSale: true
     }
 
 });
