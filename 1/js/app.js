@@ -8,7 +8,7 @@ var app = new Vue({
         altText: 'Pair of Socks',
         link: 'https://github.com/jesraygarciano',
         targetBlank: '_blank',
-        inStock: 8,
+        inStock: 2,
         onSale: true,
         details: [
             "80% cotton",
@@ -18,11 +18,13 @@ var app = new Vue({
         variants: [
             {
                 variantId: 2212,
-                variantColor: "pusia"
+                variantColor: "Green",
+                variantImage: 'image/vm-socks-green.png'
             },
             {
                 variantId: 2213,
-                variantColor: "yellowpink"
+                variantColor: "Blue",
+                variantImage: 'image/vm-socks-blue.png'
             }
         ],
         sockSizes: [
@@ -30,7 +32,24 @@ var app = new Vue({
             "Medium",
             "Large",
             "Extra Large"
-        ]
+        ],
+        cart: 0
+    },
+    methods: {
+        addToCart(){
+            this.cart += 1;
+        },
+        removeToCart(){
+
+            if(this.cart == 0){
+                this.cart == 0;
+            }else{
+                this.cart -= 1;
+            }
+        },
+        updateProductColor(variantImage){
+            this.image = variantImage  
+        }
     }
 
 });

@@ -38,11 +38,24 @@
                     </ul>
 
                     <div class="variants" v-for="variant in variants" :key="variant.variantId">
-                        <li>{{ variant.variantColor}}</li>
+                        <p @mouseover="updateProductColor(variant.variantImage)">{{ variant.variantColor}}</p>
+
                     </div>
                     <ul>
                         <li v-for="size in sockSizes">{{size}}</li>
                     </ul>
+
+                    <!-- <button v-on:click="cart += 1">Add to cart</button> -->
+                    <span>
+                        <button v-on:click="addToCart" 
+                        :disabled="!inStock"
+                        :class="{ disabledButton: !inStock }"
+                        >Add to cart</button>
+                        <button v-on:click="removeToCart">Remove to cart</button>
+                    </span>
+                    <div class="cart">
+                        <p>Cart ({{cart}})</p>
+                    </div>
                 </div>
         </div>
     </div>
