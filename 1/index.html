@@ -10,6 +10,13 @@
     <link rel="stylesheet" href="css/style.css" type="text/css" />
 </head>
 <body>
+    <div class="nav-bar">
+
+        <h1 class="nav-title">
+                Jesray Ukay ukay
+        </h1>
+
+    </div>
     <div id="app">
         <div class="product">
             <div class="product-image">
@@ -25,9 +32,18 @@
                     <p v-else-if='inStock < 10 && inStock > 0'>Almost out of stock!</p>
                     <p v-else>Out of stock!</p>
                         <!-- IF an element to frequently toggle on and off the page, you’ll want to use the v-show directive -->
-                    <span class="onsale" v-if="onSale">OnSale</span>
-                    <span></span>
-            </div>
+                    <span class="onsale" v-if="onSale">OnSale!</span>
+                    <ul>
+                        <li v-for="detail in details">{{detail}}</li>
+                    </ul>
+
+                    <div class="variants" v-for="variant in variants" :key="variant.variantId">
+                        <li>{{ variant.variantColor}}</li>
+                    </div>
+                    <ul>
+                        <li v-for="size in sockSizes">{{size}}</li>
+                    </ul>
+                </div>
         </div>
     </div>
 
