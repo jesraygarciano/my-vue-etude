@@ -92,3 +92,7 @@ body {
     height: 60px;
   }
   
+  .outOfStock {
+    text-decoration: line-through;
+  }
+  

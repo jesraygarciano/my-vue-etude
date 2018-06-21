@@ -2,13 +2,15 @@ var app = new Vue({
 
     el: '#app',
     data: {
-        product: 'Medyas',
-        description: 'Fuzzy Medyas',
-        image: 'image/vm-socks-blue.png',
+        brand: 'Gart',
+        product: 'Vue Sock',
+        description: 'Fuzzy socks',
+        // image: 'image/vm-socks-blue.png',
+        selectedVariant: 0,
         altText: 'Pair of Socks',
         link: 'https://github.com/jesraygarciano',
         targetBlank: '_blank',
-        inStock: 2,
+        // inStock: false,
         onSale: true,
         details: [
             "80% cotton",
@@ -19,12 +21,14 @@ var app = new Vue({
             {
                 variantId: 2212,
                 variantColor: "Green",
-                variantImage: 'image/vm-socks-green.png'
+                variantImage: 'image/vm-socks-green.png',
+                variantQuantity: 0
             },
             {
                 variantId: 2213,
                 variantColor: "Blue",
-                variantImage: 'image/vm-socks-blue.png'
+                variantImage: 'image/vm-socks-blue.png',
+                variantQuantity: 32
             }
         ],
         sockSizes: [
@@ -47,10 +51,24 @@ var app = new Vue({
                 this.cart -= 1;
             }
         },
-        updateProductColor(variantImage){
-            this.image = variantImage  
+        updateProductColor(index){
+            this.selectedVariant = index
+            console.log(index)
         }
+    },
+    computed: {
+        title() {
+            return this.brand + ' ' + this.product
+        },
+        image(){
+            return this.variants[this.selectedVariant].variantImage
+        },
+        inStock(){
+            return this.variants[this.selectedVariant].variantQuantity
+        }
+        
     }
+
 
 });
 
