@@ -18,7 +18,10 @@ export default {
   },
   methods: {
     translateText: function(text){
-
+      this.$http.get('https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20180622T051557Z.84acc5bb4f9921ad.5bc0acb6037cb072100184329f20151a72d9d79e&lang=ru&text='+text)
+      .then((response) => {
+        console.log(response);
+      });
     }
   }
 }
