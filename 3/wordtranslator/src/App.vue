@@ -1,35 +1,32 @@
 <template>
-  <div id="app">
-    <!-- <img src="./assets/logo.png"> -->
-    <!-- <router-view/> -->
-    <h1>Word Translate</h1>
-    <h5>Powered by Vue.js</h5>
+  <div class="text-center" id="app">
+    <h1>Word Translator</h1>
+    <h5 class="text-muted">Powered By Vue.js</h5>
+    <hr>
     <TranslateForm v-on:formSubmit="translateText"></TranslateForm>
-    <TranslateOutput v-text="translateText"></TranslateOutput>
+    <TranslateOutput v-text="translatedText"></TranslateOutput>
   </div>
 </template>
 
 <script>
 import TranslateForm from './components/TranslateForm'
-import Translateoutput from './components/TranslateOutput'
-
+import TranslateOutput from './components/TranslateOutput';
 export default {
-  name: 'App',
-  components: {
+  name: 'app',
+  components:{
     TranslateForm,
     TranslateOutput
   },
   data: function(){
-    return{
-      translateText:''
+    return {
+      translatedText:''
     }
   },
   methods: {
-    translateText: function(text){
-      this.$http.get('https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20180622T051557Z.84acc5bb4f9921ad.5bc0acb6037cb072100184329f20151a72d9d79e&lang=es&text='+text)
+    translateText:function(text, language){
+      this.$http.get('https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20170329T180255Z.3c18d2dc7b65d525.f23ed9a9efa992bded4ef96334e3c154f61d2dea&lang='+language+'&text='+text)
       .then((response) => {
-        this.translateText= response.body.text[0];
-
+        this.translatedText = response.body.text[0];
       });
     }
   }
@@ -37,12 +34,7 @@ export default {
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+body {
+  background:#fefefe;
 }
 </style>
